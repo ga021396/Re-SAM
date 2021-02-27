@@ -1,14 +1,18 @@
 import "./opening.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { getHero } from "../../store/hero/selectors";
-import { Hero } from "../../store/hero/type";
-import { useState } from "react";
-import { fetch } from "../../store/hero/action";
+
+import { useDispatch } from "react-redux";
+import { fetchLoading } from "../../store/stage/action";
 
 const snow = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 function Opening() {
   const dispatch = useDispatch();
+  const handle = () => {
+    dispatch(fetchLoading(true));
+    setTimeout(() => {
+      dispatch(fetchLoading(false));
+    }, 4000);
+  };
 
   return (
     <div className="container">
@@ -16,16 +20,21 @@ function Opening() {
         <div className="svg"></div>
       ))}
 
+      <div className={"loadingContainer"}>
+        <div className="firText">如果可以回到過去</div>
+        <div className="secText">你會怎麼選擇呢</div>
+      </div>
+
       <div className={"titleContainer"}>
         <div className={"title"}>Re:Sam</div>
         <div className="btnCon">
-          <button className="Btn" onClick={() => {}}>
+          <button className={"Btn cur"} onClick={handle}>
             開始
           </button>
 
-          <div className="Btn" onClick={() => {}}>
+          <button className={"Btn cur"} onClick={handle}>
             說明
-          </div>
+          </button>
         </div>
       </div>
     </div>

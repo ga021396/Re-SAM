@@ -2,11 +2,11 @@ import { createSelector } from "reselect";
 import { RootState } from "typesafe-actions";
 import { countState } from "./reducer";
 
-export const getState = (state: RootState) => state.count;
+export const getState = (state: RootState) => state.stage;
 
-export const getCount = createSelector(
+export const getLoading = createSelector(
   getState,
-  (state: countState) => state.count
+  (state: countState) => state.loading
 );
 
 export const getMessage = createSelector(

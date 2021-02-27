@@ -1,12 +1,11 @@
 import { Dispatch } from "redux";
 import { createAsyncAction, RootAction, RootState } from "typesafe-actions";
-import { Error } from "./type";
 
-export const fetchAsync = createAsyncAction(
+export const fetchLoadingAsync = createAsyncAction(
   "FETCH_REQUEST",
-  "FETCH_SUCCESS",
+  "FETCH_LOADING_SUCCESS",
   "FETCH_FAILURE"
-)<undefined, number, Error>();
+)<undefined, boolean, Error>();
 
 export const fetchMessageAsync = createAsyncAction(
   "FETCH_REQUEST",
@@ -14,11 +13,11 @@ export const fetchMessageAsync = createAsyncAction(
   "FETCH_FAILURE"
 )<undefined, string, Error>();
 
-export const fetchCount = (count: number): any => async (
+export const fetchLoading = (mask: boolean): any => async (
   dispatch: Dispatch<RootAction>,
   getState: () => RootState
 ) => {
-  dispatch(fetchAsync.success(count));
+  dispatch(fetchLoadingAsync.success(mask));
 };
 
 export const fetchMessage = (message: string): any => async (
