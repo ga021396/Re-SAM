@@ -1,7 +1,7 @@
 import "./opening.scss";
 
 import { useDispatch } from "react-redux";
-import { fetchLoading } from "../../store/stage/action";
+import { fetchLoading, fetchScene } from "../../store/stage/action";
 
 const snow = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
@@ -9,6 +9,9 @@ function Opening() {
   const dispatch = useDispatch();
   const handle = () => {
     dispatch(fetchLoading(true));
+    setTimeout(() => {
+      dispatch(fetchScene(1));
+    }, 2000);
     setTimeout(() => {
       dispatch(fetchLoading(false));
     }, 4000);
@@ -30,10 +33,6 @@ function Opening() {
         <div className="btnCon">
           <button className={"Btn cur"} onClick={handle}>
             開始
-          </button>
-
-          <button className={"Btn cur"} onClick={handle}>
-            說明
           </button>
         </div>
       </div>

@@ -7,6 +7,12 @@ export const fetchLoadingAsync = createAsyncAction(
   "FETCH_FAILURE"
 )<undefined, boolean, Error>();
 
+export const fetchSceneAsync = createAsyncAction(
+  "FETCH_REQUEST",
+  "FETCH_SCENE_SUCCESS",
+  "FETCH_FAILURE"
+)<undefined, number, Error>();
+
 export const fetchMessageAsync = createAsyncAction(
   "FETCH_REQUEST",
   "FETCH_MESSAGE_SUCCESS",
@@ -18,6 +24,13 @@ export const fetchLoading = (mask: boolean): any => async (
   getState: () => RootState
 ) => {
   dispatch(fetchLoadingAsync.success(mask));
+};
+
+export const fetchScene = (scene: number): any => async (
+  dispatch: Dispatch<RootAction>,
+  getState: () => RootState
+) => {
+  dispatch(fetchSceneAsync.success(scene));
 };
 
 export const fetchMessage = (message: string): any => async (

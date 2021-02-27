@@ -9,6 +9,11 @@ export const getLoading = createSelector(
   (state: countState) => state.loading
 );
 
+export const getScene = createSelector(
+  getState,
+  (state: countState) => state.scene
+);
+
 export const getMessage = createSelector(
   getState,
   (state: countState) => state.message

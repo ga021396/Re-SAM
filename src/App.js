@@ -1,9 +1,10 @@
 import React from "react";
 import Opening from "./pages/Opening";
 import Mask from "./pages/Mask";
+import Scene from "./pages/Scene";
 
 import { useSelector } from "react-redux";
-import { getLoading } from "./store/stage/selectors";
+import { getLoading, getScene } from "./store/stage/selectors";
 
 import "./App.scss";
 
@@ -22,10 +23,13 @@ const a = () => {};
 
 function App() {
   const isLoading = useSelector(getLoading);
+  const scene = useSelector(getScene);
+
   return (
     <div className="App">
       {isLoading && <Mask></Mask>}
-      <Opening></Opening>
+      {scene === 0 && <Opening></Opening>}
+      {scene === 1 && <Scene></Scene>}
     </div>
   );
 }
