@@ -1,16 +1,23 @@
 import "./opening.scss";
-
 import { useDispatch } from "react-redux";
 import { fetchLoading, fetchScene } from "../../store/stage/action";
 
 const snow = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
-function Opening() {
+type AudioHandler = {
+  audio: any;
+  setAudio: any;
+  playAudio: any;
+  pauseAudio: any;
+};
+
+function Opening({ pauseAudio }: AudioHandler) {
   const dispatch = useDispatch();
   const handle = () => {
     dispatch(fetchLoading(true));
     setTimeout(() => {
-      dispatch(fetchScene(1));
+      dispatch(fetchScene(2));
+      pauseAudio();
     }, 2000);
     setTimeout(() => {
       dispatch(fetchLoading(false));
@@ -22,12 +29,6 @@ function Opening() {
       {snow.map(() => (
         <div className="svg"></div>
       ))}
-
-      <div className={"loadingContainer"}>
-        <div className="firText">如果可以回到過去</div>
-        <div className="secText">你會怎麼選擇呢</div>
-      </div>
-
       <div className={"titleContainer"}>
         <div className={"title"}>Re:Sam</div>
         <div className="btnCon">

@@ -24,34 +24,10 @@
   font-size: 80px;
   font-family: "Dancing Script", cursive;
   margin-bottom: 20px;
-  animation: text 3s 8s 1;
+  animation: text 4s 1;
   animation-fill-mode: forwards;
   opacity: 0;
-}
-
-.loadingContainer {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.firText {
-  opacity: 0;
-  font-size: 24px;
-  animation: firstText 4s 1;
-  animation-fill-mode: forwards;
-  position: absolute;
-}
-
-.secText {
-  opacity: 0;
-  font-size: 24px;
-  animation: firstText 4s 4s 1;
-  animation-fill-mode: forwards;
-  position: absolute;
+  user-select: none;
 }
 
 .btnCon {
@@ -59,7 +35,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  animation: btn 2s 10s 1;
+  animation: btn 2s 4s 1;
   animation-fill-mode: forwards;
   opacity: 0;
 }
@@ -77,6 +53,7 @@
   font-size: 14px;
   margin: 8px 0;
   border-radius: 5px;
+
   &:hover {
     background-color: white; /* Green */
     border: 1px solid black;
@@ -124,7 +101,7 @@ $total: 10;
     letter-spacing: 10px;
   }
   85% {
-    letter-spacing: 0;
+    letter-spacing: 1;
   }
   100% {
     opacity: 1;
@@ -140,23 +117,8 @@ $total: 10;
   }
 }
 
-@keyframes firstText {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  99% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 .cur {
-  animation: curAni 1s 10s 1 forwards;
+  animation: curAni 1s 4s 1 forwards;
 }
 
 @keyframes curAni {
